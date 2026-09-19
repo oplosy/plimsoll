@@ -102,7 +102,8 @@ Both endpoints:
 | Page size | `[1, 50]`, default 50 |
 | Paging | `nextPageCursor`, not an offset |
 
-Thirty days against Binance's ninety (F19 is seven-day windows over a three-month horizon), so
+Thirty days against Binance's ninety-day wallet windows (deposits/withdrawals) and the
+seven-day/three-month futures horizons (userTrades/income, F19), so
 the two venues' walks are not the same shape and the backfill scope vocabulary has to carry
 both. Fifty rows a page is small: an account with a busy deposit history pages a great many
 times, which is a rate-limit question before it is a correctness one.
