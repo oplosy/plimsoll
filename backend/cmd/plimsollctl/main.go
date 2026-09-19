@@ -9,6 +9,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -40,7 +41,7 @@ func run(args []string) error {
 		"  " + migrateUsage
 
 	if len(args) == 0 {
-		return fmt.Errorf("%s", usage)
+		return errors.New(usage)
 	}
 	switch args[0] {
 	case "migrate":
@@ -52,7 +53,7 @@ func run(args []string) error {
 		defer cancel()
 		return runRecord(ctx, args[1:])
 	default:
-		return fmt.Errorf("%s", usage)
+		return errors.New(usage)
 	}
 }
 
@@ -66,7 +67,7 @@ func runInvite(args []string) error {
 		return err
 	}
 	if *email == "" {
-		return fmt.Errorf("%s", usage)
+		return errors.New(usage)
 	}
 
 	dsn := os.Getenv(ownerDSNEnv)

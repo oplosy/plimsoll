@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -61,7 +62,7 @@ func runRecord(ctx context.Context, args []string) error {
 		return err
 	}
 	if *endpoint == "" {
-		return fmt.Errorf("%s", recordUsage)
+		return errors.New(recordUsage)
 	}
 
 	apiKey, apiSecret := os.Getenv(envAPIKey), os.Getenv(envAPISecret)
