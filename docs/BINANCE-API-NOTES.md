@@ -155,7 +155,7 @@ outright. It is the first thing M2 verifies when it records its fixtures.
 | `GET /api/v3/account` | 20 | — | — | — |
 | `GET /fapi/v1/userTrades` | 5 | max 1000, default 500 | **≤ 7 days** | **3 months** |
 | `GET /fapi/v1/income` | **30** | max 1000, default 100 | default 7 days | **3 months** |
-| `GET /fapi/v3/positionRisk` | 5 | — | — | — |
+| `GET /fapi/v3/positionRisk` | 1 | — | — | — |
 | `GET /sapi/v1/capital/deposit/hisrec` | 1 | max 1000, default 1000 | **≤ 90 days** | — |
 | `GET /sapi/v1/capital/withdraw/history` | 1 | max 1000 | **≤ 90 days** | — |
 | `GET /api/v3/exchangeInfo` | see docs | — | — | — |
