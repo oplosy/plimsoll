@@ -77,7 +77,7 @@ HighValueReviewRejected · HighValueReviewRejectedRfunding · HighValueReviewRej
 Two consequences:
 
 1. **`NormalizeBybitWithdrawal` can exist**, where `NormalizeWithdrawal` for Binance cannot
-   (F5): Binance publishes only the garbled fragment `0(0 Sent, 2 Approval 3 4 6)`, re-checked
+   (K34): Binance publishes only the garbled fragment `0(0 Sent, 2 Approval 3 4 6)`, re-checked
    on 2026-09-11 and still not enumerated. Which code means "the coins left" decides whether a
    balance is right, and encoding a remembered enum into append-only financial rows is exactly
    what is forbidden.
@@ -118,7 +118,7 @@ on the walk.
 quoted. `successAt` on a deposit is milliseconds likewise.
 
 This is the one place Bybit is *easier* than Binance, and it is worth stating because the
-Binance withdrawal blocker is half a timezone problem (F5): `applyTime` there is
+Binance withdrawal blocker is half a timezone problem (K34): `applyTime` there is
 `"2019-10-12 11:12:02"` with no timezone stated, and an eight-hour error corrupts the canonical
 order (L7) and every time-windowed reconciliation. Bybit has no such ambiguity.
 
