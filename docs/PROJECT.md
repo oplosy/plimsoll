@@ -525,7 +525,7 @@ read at the start of every session.
   writes the tests, that review is the compensating control, not a formality.
 - **One module per session.** Cross-cutting refactors get their own session.
 - `make generate` (sqlc), `make migrate`, `make test` are part of the build loop.
-- Exchange payloads are recorded into `testdata/fixtures/` first, with credentials
+- Exchange payloads are recorded into `backend/testdata/fixtures/` first, with credentials
   stripped by a checked-in redaction script. Agents work against fixtures, not the live
   API.
 - Binance endpoint details — symbol requirements, `listenKey` lifetime, `positionRisk`
