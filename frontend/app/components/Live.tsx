@@ -16,7 +16,9 @@ export function useLive(topic: string, onChange: () => void) {
     source.addEventListener(topic, handler);
     // A dropped stream is routine -- a proxy timeout, a sleeping laptop. EventSource
     // reconnects on its own, and one re-read makes the page correct again.
-    source.onerror = () => {};
+    source.onerror = () => {
+      console.debug(`live stream ${topic} error, EventSource reconnects`);
+    };
     return () => {
       source.removeEventListener(topic, handler);
       source.close();
