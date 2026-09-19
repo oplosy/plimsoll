@@ -31,9 +31,9 @@ Two processes, one database, one cache. No message broker (K8).
                                           │  reconcile·alert │
                                           └────────┬─────────┘
                                                    │ REST + WS
-                                          ┌────────▼─────────┐
-                                          │  Binance         │
-                                          └──────────────────┘
+                                           ┌────────▼─────────┐
+                                           │  Binance + Bybit V5  │
+                                           └──────────────────┘
 ```
 
 **The split is a write/read split, and it is load-bearing.**
