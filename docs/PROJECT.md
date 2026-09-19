@@ -17,7 +17,7 @@ down to its events.
 
 | Document | Contains |
 |---|---|
-| `DECISIONS.md` | K1–K46: every architectural decision, its rationale and its cost |
+| `DECISIONS.md` | K1–K57: every architectural decision, its rationale and its cost |
 | `ARCHITECTURE.md` | Module boundaries, data flow, tenancy mechanics, worker model, schema deltas |
 | `COMPETITIVE-ANALYSIS.md` | Market segmentation, the gap, competitor failure modes |
 | `../CLAUDE.md` = `../AGENTS.md` | Agent operating manual: invariants, workflow, definition of done |
