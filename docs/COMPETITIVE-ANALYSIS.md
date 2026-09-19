@@ -165,10 +165,10 @@ In priority order. "V1" means it must be in the first release.
 | G4 | **A data quality layer** | Negative balance, sequence gaps, unknown assets and price gaps are all missing-event alarms | V1 | K14 |
 | G5 | **Strategy / sleeve dimension** | Delta-neutral setups are reported incorrectly without it | V1 | K13 |
 | G6 | **Lineage / explain endpoint** | Free for us because we are event-sourced; it is what institutional products call "audit-ready" | V1 | K1 |
-| G7 | **Alert channels + hysteresis** | Writing a row in a table is not an alert, and a threshold that oscillates must not spam | V1 | — |
-| G8 | **Collateral as its own domain** | MMR (intra-venue) and LTV (extra-venue) are different concepts; leverage is not one number | M5 | — |
-| G9 | **Reconciliation classification + resolution flow** | "Mismatch" alone is not actionable; a cause and an action are required | M7 | — |
-| G10 | **Scenario shock** | "What if BTC drops 20%" — cheap because the engine is a pure function, and extremely valuable | M7.5 | L4 |
+| G7 | **Alert channels + hysteresis** | Writing a row in a table is not an alert, and a threshold that oscillates must not spam | V1 | M6 / K51 |
+| G8 | **Collateral as its own domain** | MMR (intra-venue) and LTV (extra-venue) are different concepts; leverage is not one number | M5 | M5 / K50 |
+| G9 | **Reconciliation classification + resolution flow** | "Mismatch" alone is not actionable; a cause and an action are required | M7 | M7 / K53, K54, K55 |
+| G10 | **Scenario shock** | "What if BTC drops 20%" — cheap because the engine is a pure function, and extremely valuable | M7.5 | M7.5 / K56 |
 | G11 | **TWR / performance** | Deposits and withdrawals distort PnL; "returns change when the window changes" | V2 | — |
 | G12 | **Tax lot projection** | US rules require per-wallet cost basis; the ledger must stay lot-derivable | V2 | K5 |
 | G13 | **Reference currency + FX** | USD/USDT/BTC/TRY views; it matters during a stablecoin depeg | V1 decision, V2 multi-currency | K17 |
