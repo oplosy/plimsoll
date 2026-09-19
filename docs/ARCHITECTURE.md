@@ -175,7 +175,7 @@ A snapshot is a cache. Deleting all snapshots must change performance and nothin
 Per integration, never global (K20, L6):
 
 ```
-positions.last_venue_sequence   -- cursor, scoped to one integration
+(last_event_time, last_venue_sequence, last_venue_event_id)   -- cursor, scoped to one integration
 ```
 
 The worker holds an exclusive lease on the integration, so within that scope there is
