@@ -361,9 +361,9 @@ This applies again to manual transfer confirmations (K12) and to acknowledged
 reconciliation findings.
 
 ### K31 — M1's fixtures are canonical events, not exchange payloads · `active`
-The golden files in `testdata/golden/` hold normalized events plus the arithmetic worked
+The golden files in `backend/testdata/golden/` hold normalized events plus the arithmetic worked
 out by hand. Normalization is the exchange module's job in M2, and recorded Binance
-payloads live in `testdata/fixtures/binance/`. Mixing them would make a golden failure
+payloads live in `backend/testdata/fixtures/binance/`. Mixing them would make a golden failure
 ambiguous about which layer broke.
 
 **Why the arithmetic is written in the file:** a golden file that records only what the
