@@ -146,7 +146,7 @@ func (o rawObject) num(key string) (int64, error) {
 func parseExecutionReport(raw json.RawMessage) (executionReport, error) {
 	var object rawObject
 	if err := json.Unmarshal(raw, &object); err != nil {
-		return executionReport{}, fmt.Errorf("%w: decode executionReport: %v", ErrMalformedTrade, err)
+		return executionReport{}, fmt.Errorf("%w: decode executionReport: %w", ErrMalformedTrade, err)
 	}
 
 	var report executionReport
@@ -180,7 +180,7 @@ func parseExecutionReport(raw json.RawMessage) (executionReport, error) {
 		report.CommissionAss, report.HasCommission, err = object.str("N")
 	}
 	if err != nil {
-		return executionReport{}, fmt.Errorf("%w: %v", ErrMalformedTrade, err)
+		return executionReport{}, fmt.Errorf("%w: %w", ErrMalformedTrade, err)
 	}
 	return report, nil
 }
@@ -209,7 +209,7 @@ func NormalizeSpotTrade(
 ) (ledger.Event, error) {
 	var trade restTrade
 	if err := json.Unmarshal(raw, &trade); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode myTrades element: %v", ErrMalformedTrade, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode myTrades element: %w", ErrMalformedTrade, err)
 	}
 	side := ledger.SideSell
 	if trade.IsBuyer {
@@ -312,7 +312,7 @@ func buildTrade(
 
 	quantity, err := parseAmount(f.quantity)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: %s trade %d quantity: %v",
+		return ledger.Event{}, fmt.Errorf("%w: %s trade %d quantity: %w",
 			ErrMalformedTrade, f.symbol, f.tradeID, err)
 	}
 	if !quantity.IsPositive() {
@@ -321,7 +321,7 @@ func buildTrade(
 	}
 	price, err := parseAmount(f.price)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: %s trade %d price: %v",
+		return ledger.Event{}, fmt.Errorf("%w: %s trade %d price: %w",
 			ErrMalformedTrade, f.symbol, f.tradeID, err)
 	}
 	if price.IsNegative() {
@@ -437,7 +437,7 @@ func resolveFee(
 ) (decimal.NullDecimal, string, *int64, error) {
 	fee, err := parseFee(rawFee, rawAsset)
 	if err != nil {
-		return decimal.NullDecimal{}, "", nil, fmt.Errorf("%w: %v", ErrMalformedTrade, err)
+		return decimal.NullDecimal{}, "", nil, fmt.Errorf("%w: %w", ErrMalformedTrade, err)
 	}
 
 	feeAsset := rawAsset
