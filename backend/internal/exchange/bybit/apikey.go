@@ -65,7 +65,7 @@ func ParsePermissions(raw json.RawMessage) (KeyInfo, error) {
 		Permissions map[string][]string `json:"permissions"`
 	}
 	if err := json.Unmarshal(raw, &payload); err != nil {
-		return KeyInfo{}, fmt.Errorf("%w: %v", ErrMalformedKeyInfo, err)
+		return KeyInfo{}, fmt.Errorf("%w: %w", ErrMalformedKeyInfo, err)
 	}
 	if payload.ReadOnly == nil {
 		// Absent is not false. A payload missing the one field the decision rests on is a

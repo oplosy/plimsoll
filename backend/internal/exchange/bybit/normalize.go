@@ -104,7 +104,7 @@ func NormalizeDeposit(
 		TxID      string `json:"txID"`
 	}
 	if err := json.Unmarshal(raw, &row); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode deposit: %v", ErrMalformed, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode deposit: %w", ErrMalformed, err)
 	}
 	if row.Status == nil {
 		return ledger.Event{}, fmt.Errorf("%w: deposit %s reports no status", ErrMalformed, row.ID)
@@ -119,7 +119,7 @@ func NormalizeDeposit(
 
 	at, err := epochMillis(row.SuccessAt)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: deposit %s: %v", ErrMalformed, row.ID, err)
+		return ledger.Event{}, fmt.Errorf("%w: deposit %s: %w", ErrMalformed, row.ID, err)
 	}
 	return balanceEvent(ctx, r, ic, raw, balanceRow{
 		venueEventID: DepositID(row.ID),
@@ -149,7 +149,7 @@ func NormalizeWithdrawal(
 		TxID       string `json:"txID"`
 	}
 	if err := json.Unmarshal(raw, &row); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode withdrawal: %v", ErrMalformed, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode withdrawal: %w", ErrMalformed, err)
 	}
 	settled, known := withdrawSettled[row.Status]
 	switch {
@@ -161,7 +161,7 @@ func NormalizeWithdrawal(
 
 	at, err := epochMillis(row.UpdateTime)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: withdrawal %s: %v", ErrMalformed, row.WithdrawID, err)
+		return ledger.Event{}, fmt.Errorf("%w: withdrawal %s: %w", ErrMalformed, row.WithdrawID, err)
 	}
 	return balanceEvent(ctx, r, ic, raw, balanceRow{
 		venueEventID: WithdrawalID(row.WithdrawID),

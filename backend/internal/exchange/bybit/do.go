@@ -89,13 +89,13 @@ func (c *Client) attempt(ctx context.Context, req request) (json.RawMessage, err
 	if err != nil {
 		// The URL is in the error and the credential is not: the path is a debugging aid,
 		// the key is never one (L13).
-		return nil, fmt.Errorf("%w: %s: %v", errRetryable, req.path, err)
+		return nil, fmt.Errorf("%w: %s: %w", errRetryable, req.path, err)
 	}
 	defer func() { _ = resp.Body.Close() }()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, fmt.Errorf("%w: read %s: %v", errRetryable, req.path, err)
+		return nil, fmt.Errorf("%w: read %s: %w", errRetryable, req.path, err)
 	}
 
 	switch {

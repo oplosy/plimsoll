@@ -102,11 +102,11 @@ func ParsePermissions(raw json.RawMessage) (Permissions, error) {
 	// only way to see a permission Binance shipped after this code was written.
 	var perms Permissions
 	if err := json.Unmarshal(raw, &perms); err != nil {
-		return Permissions{}, fmt.Errorf("%w: %v", ErrMalformedRestrictions, err)
+		return Permissions{}, fmt.Errorf("%w: %w", ErrMalformedRestrictions, err)
 	}
 	var fields map[string]any
 	if err := json.Unmarshal(raw, &fields); err != nil {
-		return Permissions{}, fmt.Errorf("%w: %v", ErrMalformedRestrictions, err)
+		return Permissions{}, fmt.Errorf("%w: %w", ErrMalformedRestrictions, err)
 	}
 	if fields == nil {
 		// JSON null decodes into a nil map without error, and would otherwise pass through
