@@ -235,7 +235,7 @@ docs/
   PROJECT.md               scope, canonical model, API, milestones
   COMPETITIVE-ANALYSIS.md  positioning and competitor failure modes
   BINANCE-API-NOTES.md     F1-F21, every venue fact verified against the docs
-  BYBIT-API-NOTES.md       B1-B4, the same for the second venue
+  BYBIT-API-NOTES.md       B1-B5, the same for the second venue
   plans/                   per-milestone implementation plans
 backend/
   cmd/api/                 HTTP process — reads only, never writes the ledger
