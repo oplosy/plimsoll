@@ -2,7 +2,8 @@
 
 Every architectural decision, why it was made, and what it costs. Referenced by ID
 throughout the codebase and the other documents. K1–K14 come from the original project
-draft; K15–K28 were added after the multi-user / correctness review.
+draft; K15–K28 were added after the multi-user / correctness review; K29–K57 resolve
+the M1–M8 build.
 
 A decision is only listed here if reversing it later would be expensive. Preferences
 that can change freely do not belong in this file.
