@@ -75,7 +75,7 @@ func NormalizeDeposit(
 ) (ledger.Event, error) {
 	var row depositRow
 	if err := json.Unmarshal(raw, &row); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode deposit: %v", ErrMalformedTrade, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode deposit: %w", ErrMalformedTrade, err)
 	}
 
 	settled, known := depositSettled[row.Status]
@@ -102,7 +102,7 @@ func NormalizeDeposit(
 
 	amount, err := parseAmount(row.Amount)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: deposit %s amount: %v", ErrMalformedTrade, row.ID, err)
+		return ledger.Event{}, fmt.Errorf("%w: deposit %s amount: %w", ErrMalformedTrade, row.ID, err)
 	}
 	if !amount.IsPositive() {
 		return ledger.Event{}, fmt.Errorf("%w: deposit %s has amount %s",

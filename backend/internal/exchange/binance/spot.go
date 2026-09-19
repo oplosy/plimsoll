@@ -273,7 +273,7 @@ func RequestWeightPerMinute(raw json.RawMessage) (int, error) {
 		RateLimits []rateLimitEntry `json:"rateLimits"`
 	}
 	if err := json.Unmarshal(raw, &payload); err != nil {
-		return 0, fmt.Errorf("%w: %v", ErrNoRequestWeightLimit, err)
+		return 0, fmt.Errorf("%w: %w", ErrNoRequestWeightLimit, err)
 	}
 	for _, entry := range payload.RateLimits {
 		if entry.RateLimitType != "REQUEST_WEIGHT" || entry.Interval != "MINUTE" {

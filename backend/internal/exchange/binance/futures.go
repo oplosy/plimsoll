@@ -174,7 +174,7 @@ func NormalizeFuturesTrade(
 ) (ledger.Event, error) {
 	var row futuresTradeRow
 	if err := json.Unmarshal(raw, &row); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode userTrades element: %v", ErrMalformedTrade, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode userTrades element: %w", ErrMalformedTrade, err)
 	}
 
 	if row.PositionSide != "" && row.PositionSide != positionSideOneWay {
@@ -207,12 +207,12 @@ func NormalizeFuturesTrade(
 
 	quantity, err := parseAmount(row.Qty)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: futures fill %d quantity: %v",
+		return ledger.Event{}, fmt.Errorf("%w: futures fill %d quantity: %w",
 			ErrMalformedTrade, row.ID, err)
 	}
 	price, err := parseAmount(row.Price)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: futures fill %d price: %v",
+		return ledger.Event{}, fmt.Errorf("%w: futures fill %d price: %w",
 			ErrMalformedTrade, row.ID, err)
 	}
 	if !quantity.IsPositive() || !price.IsPositive() {

@@ -60,7 +60,7 @@ func NormalizeIncome(
 ) (ledger.Event, error) {
 	var row incomeRow
 	if err := json.Unmarshal(raw, &row); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode income element: %v", ErrMalformedTrade, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode income element: %w", ErrMalformedTrade, err)
 	}
 
 	switch row.IncomeType {
@@ -115,7 +115,7 @@ func NormalizeIncome(
 	// forever, and taking the absolute value here would turn every payment into a cost.
 	amount, err := parseAmount(row.Income)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: income %d amount: %v",
+		return ledger.Event{}, fmt.Errorf("%w: income %d amount: %w",
 			ErrMalformedTrade, row.TranID, err)
 	}
 

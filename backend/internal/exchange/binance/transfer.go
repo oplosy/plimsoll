@@ -126,7 +126,7 @@ func NormalizeTransfer(
 ) (ledger.Event, error) {
 	var row transferRow
 	if err := json.Unmarshal(raw, &row); err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: decode transfer: %v", ErrMalformedTrade, err)
+		return ledger.Event{}, fmt.Errorf("%w: decode transfer: %w", ErrMalformedTrade, err)
 	}
 
 	if row.Status != statusConfirmed {
@@ -155,7 +155,7 @@ func NormalizeTransfer(
 
 	amount, err := parseAmount(row.Amount)
 	if err != nil {
-		return ledger.Event{}, fmt.Errorf("%w: transfer %d amount: %v",
+		return ledger.Event{}, fmt.Errorf("%w: transfer %d amount: %w",
 			ErrMalformedTrade, row.TranID, err)
 	}
 	if !amount.IsPositive() {
