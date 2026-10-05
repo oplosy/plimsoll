@@ -2,11 +2,11 @@
   "name": "plimsoll-frontend",
   "private": true,
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "test": "node --test \"app/lib/*.test.ts\"",
     "check": "tsc --noEmit && node scripts/no-float-parsing.mjs && npm test"
   },
