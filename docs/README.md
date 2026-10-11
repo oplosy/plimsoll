@@ -11,6 +11,8 @@ This repository has no root README yet. Start with the [project definition](PROJ
 - [Bybit API notes](BYBIT-API-NOTES.md)
 - [Competitive analysis](COMPETITIVE-ANALYSIS.md)
 
+- [Local development commands](DEVELOPMENT.md)
+
 ## Delivery records
 
 - [Implementation plans](plans/)
