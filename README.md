@@ -14,11 +14,11 @@ lineage, data quality, market data and valuation, perpetuals and collateral,
 strategy tagging, risk and alerting, reconciliation, scenario shock, and Bybit
 cross-venue transfers.
 
-**M2 is not verified against a real account.** The Binance backfill is code
-complete and tested against recorded fixtures and a fake exchange, but no real
-read-only key has been connected. Real account history, idempotency on real
-payloads and rate-limit behavior are unproven. Bybit trades, positions and funding
-are not built by decision.
+**Known limitation: M2 is not verified against a real account.** The Binance
+backfill is code complete and tested against recorded fixtures and a fake exchange,
+but no real read-only key has been connected, and this was accepted on 2026-11-02.
+Real account history, idempotency on real payloads and rate-limit behavior are
+unproven. Bybit trades, positions and funding are not built by decision.
 
 ## Run it
 

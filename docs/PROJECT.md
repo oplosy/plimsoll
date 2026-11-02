@@ -348,7 +348,7 @@ Directories are created when the module is written, not in advance.
 |---|---|---|
 | **M0** ✅ | Skeleton + tenancy foundation | `compose up` → `/healthz`; goose migrate; sqlc generate; OTel trace visible; two DB roles; `tenancy.InTx` wrapper; accounts/sessions/invites; **tenant isolation test green with the application-level `WHERE` deliberately removed** |
 | **M1** ✅ | Asset/instrument registry + ledger + position engine — **no network** | Fixture replay: spot average cost + realized PnL correct; time-scoped alias resolution tested; idempotency, order-independence and rebuild-equality tests green |
-| **M2** 🟡 | Binance spot backfill | Real account history → ledger; idempotency holds across REST and WS paths; backfill resumes after interruption — **code complete, live verification pending** (see below) |
+| **M2** 🟡 | Binance spot backfill | Real account history → ledger; idempotency holds across REST and WS paths; backfill resumes after interruption — **code complete; live verification against a real account not done, accepted as a known limitation on 2026-11-02** (see below) |
 | **M3** ✅ | Portfolio + API + lineage | `GET /portfolio` correct; `GET /positions/{id}/lineage` opens a position down to its events |
 | **M3.5** ✅ | Data quality + intra-venue transfers | Negative-balance / gap / unknown-symbol checks running; a spot ↔ futures transfer is not counted as a sale |
 | **M4** ✅ | Market data + valuation | `price_ticks` populating; one `valuation_run` per response; USD price paths recorded; `freshness` populated; `GET /portfolio?at=` working. `GET /pnl` and the lineage price paths shipped with it; `GET /portfolio/history` deliberately deferred (K48) |
@@ -387,7 +387,9 @@ requires a granted permission at all, or whether `readOnly` alone suffices. The 
 none. A key that needs one fails loudly at the first call with the venue's own error, which is
 the right failure; inferring a permission model would be the wrong one.
 
-**M2 is code complete and not shipped.** Every piece is written and tested against
+**M2 is code complete and its live verification is an accepted limitation
+(2026-11-02).** The criteria below stay unproven; accepting that does not make them
+proven. Every piece is written and tested against
 recorded and documented fixtures: the signed REST client, the normalizer, the resumable
 backfill, the live WebSocket stream, the single-writer lease and the supervisor. `make
 test-integration` covers "backfill resumes after interruption" and "one identity for one
