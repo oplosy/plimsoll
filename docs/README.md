@@ -1,6 +1,6 @@
 # Documentation index
 
-This repository has no root README yet. Start with the [project definition](PROJECT.md) for scope and milestones.
+Start with the [root README](../README.md) for status and commands, then the [project definition](PROJECT.md) for scope and milestones.
 
 ## System reference
 
